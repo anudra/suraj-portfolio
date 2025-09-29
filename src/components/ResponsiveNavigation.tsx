@@ -13,9 +13,9 @@ interface ResponsiveNavigationProps {
 const navigationItems = [
   { id: 'home', label: 'Home', icon: Home },
   { id: 'about', label: 'About Me', icon: User },
-  { id: 'experience', label: 'My Education/Experience', icon: Briefcase },
-  { id: 'designs', label: 'My Designs/Work', icon: Palette },
-  { id: 'videos', label: 'My Products', icon: Video },
+  { id: 'experience', label: 'My Experience', icon: Briefcase },
+  { id: 'designs', label: 'My Work', icon: Palette },
+  { id: 'videos', label: 'My Videos', icon: Video },
   { id: 'contact', label: 'Contact Me', icon: Mail },
 ];
 
@@ -46,8 +46,8 @@ export function ResponsiveNavigation({ currentPage, onPageChange }: ResponsiveNa
 
     return (
       <div className="fixed top-6 left-1/2 transform -translate-x-1/2 z-50">
-        <div className="backdrop-blur-md bg-black/90 border border-white/20 rounded-[50px] px-8 py-4">
-          <div className="flex items-center gap-6">
+        <div className="backdrop-blur-md bg-black/90 border border-white/20 rounded-[50px] px-4 py-3">
+          <div className="flex items-center gap-3 whitespace-nowrap">
             {/* Left Navigation Items */}
             {leftNavItems.map((item) => (
               <button
@@ -64,8 +64,8 @@ export function ResponsiveNavigation({ currentPage, onPageChange }: ResponsiveNa
             ))}
 
             {/* Center Name/Logo */}
-            <div className="px-8">
-              <h1 className="text-white font-bold text-xl tracking-wider">SURAJ TP</h1>
+            <div className="px-4">
+              <h1 className="text-white font-bold text-lg tracking-wider">SURAJ TP</h1>
             </div>
 
             {/* Right Navigation Items */}
@@ -73,7 +73,7 @@ export function ResponsiveNavigation({ currentPage, onPageChange }: ResponsiveNa
               <button
                 key={item.id}
                 onClick={() => handleNavigation(item.id)}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                className={`px-4 py-2 rounded-full text-xs font-medium transition-all duration-300 ${
                   currentPage === item.id
                     ? 'bg-white text-black'
                     : 'text-white hover:text-gray-300'

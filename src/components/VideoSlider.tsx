@@ -56,7 +56,7 @@ export function VideoSlider() {
   };
 
   return (
-    <div className="relative max-w-5xl mx-auto">
+    <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
       {/* Main Slider */}
       <div className="relative overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-lg">
         <div 
@@ -102,11 +102,11 @@ export function VideoSlider() {
                   }`}
                   onClick={() => togglePlayPause(index)}
                 >
-                  <button className="w-16 h-16 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors">
+                  <button className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors">
                     {isPlaying && hoveredVideo === index ? (
-                      <Pause className="w-6 h-6 text-gray-800" />
+                      <Pause className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-gray-800" />
                     ) : (
-                      <Play className="w-6 h-6 text-gray-800 ml-1" />
+                      <Play className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-gray-800 ml-0.5" />
                     )}
                   </button>
                 </div>
@@ -141,18 +141,18 @@ export function VideoSlider() {
               </div>
 
               {/* Video Info (Always Visible) */}
-              <div className="p-8 bg-white">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="text-sm text-gray-500 bg-gray-100 rounded-full px-3 py-1">
+              <div className="p-4 sm:p-6 lg:p-8 bg-white">
+                <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 flex-wrap">
+                  <span className="text-xs sm:text-sm text-gray-500 bg-gray-100 rounded-full px-2 py-0.5 sm:px-3 sm:py-1">
                     {video.category}
                   </span>
-                  <span className="text-sm text-gray-500">{video.duration}</span>
+                  <span className="text-xs sm:text-sm text-gray-500">{video.duration}</span>
                   {video.views && (
-                    <span className="text-sm text-gray-500">• {video.views} views</span>
+                    <span className="text-xs sm:text-sm text-gray-500">• {video.views} views</span>
                   )}
                 </div>
-                <h3 className="text-2xl mb-2 text-black">{video.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{video.description}</p>
+                <h3 className="text-lg sm:text-xl lg:text-2xl mb-2 text-black leading-tight">{video.title}</h3>
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{video.description}</p>
               </div>
             </div>
           ))}
@@ -162,20 +162,20 @@ export function VideoSlider() {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white border border-gray-200 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors z-20"
+        className="absolute left-2 sm:left-4 lg:left-6 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-white border border-gray-200 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors z-20"
       >
-        <ChevronLeft className="w-5 h-5 text-gray-600" />
+        <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
       </button>
       
       <button
         onClick={nextSlide}
-        className="absolute right-6 top-1/2 -translate-y-1/2 w-12 h-12 bg-white border border-gray-200 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors z-20"
+        className="absolute right-2 sm:right-4 lg:right-6 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-white border border-gray-200 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors z-20"
       >
-        <ChevronRight className="w-5 h-5 text-gray-600" />
+        <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
       </button>
 
       {/* Dots Indicator */}
-      <div className="flex justify-center space-x-3 mt-8">
+      <div className="flex justify-center space-x-2 sm:space-x-3 mt-4 sm:mt-6 lg:mt-8">
         {videosData.map((_, index) => (
           <button
             key={index}

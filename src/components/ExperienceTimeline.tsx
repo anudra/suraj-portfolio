@@ -14,7 +14,7 @@ export const ExperienceTimeline: React.FC = () => {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(79,70,229,0.02)_0%,transparent_70%)] animate-pulse" style={{animationDelay: '2.5s', animationDuration: '6s'}}></div>
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_60%,rgba(0,0,0,0.015)_0%,transparent_80%)] animate-pulse" style={{animationDelay: '0.5s', animationDuration: '7s'}}></div>
       
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
         <div className="text-center mb-12 lg:mb-16 animate-fade-in-up">
           <h2 className="text-3xl sm:text-4xl lg:text-4xl font-bold bg-gradient-to-r from-black via-gray-800 to-black bg-clip-text text-transparent mb-4">Professional Journey</h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
@@ -30,7 +30,7 @@ export const ExperienceTimeline: React.FC = () => {
             
             <div className="space-y-16">
               {timelineData.map((item, index) => (
-                <div key={index} className="grid grid-cols-3 gap-8 items-center">
+                <div key={index} className="grid grid-cols-[2fr_auto_2fr] gap-8 items-center">
                   {/* Left Column - Timeline Item Info */}
                   <div className="text-right pr-8">
                     <div className="mb-3">
@@ -57,7 +57,7 @@ export const ExperienceTimeline: React.FC = () => {
                   </div>
 
                   {/* Center Column - Timeline Dot */}
-                  <div className="flex justify-center relative">
+                  <div className="flex justify-center relative px-4">
                     {/* Vertical line connector - only show for items that aren't the last */}
                     {index < timelineData.length - 1 && (
                       <div className="absolute top-6 w-0.5 h-16 bg-gray-300 z-0"></div>
@@ -82,26 +82,26 @@ export const ExperienceTimeline: React.FC = () => {
 
         {/* Mobile Layout - Left Timeline */}
         <div className="lg:hidden relative">
-          {/* Left vertical line */}
-          <div className="absolute left-6 top-0 bottom-0 w-1 bg-gray-300"></div>
+          {/* Left vertical line - smaller on mobile */}
+          <div className="absolute left-3 sm:left-4 top-0 bottom-0 w-0.5 bg-gray-300"></div>
           
           {/* Timeline Items */}
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-10">
             {timelineData.map((item, index) => (
               <div key={index} className="relative flex items-start">
-                {/* Timeline Dot */}
+                {/* Timeline Dot - smaller on mobile */}
                 <div className="relative flex-shrink-0">
-                  <div className={`w-12 h-12 rounded-full border-4 border-white shadow-lg ${
+                  <div className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full border-2 sm:border-3 border-white shadow-md ${
                     index === 0 ? 'bg-black' : 'bg-gray-400'
                   }`}></div>
                 </div>
                 
-                {/* Content Container */}
-                <div className="ml-6 flex-1">
-                  <div className="bg-white border-2 border-gray-200 rounded-xl p-6 shadow-sm">
-                    {/* Badge */}
-                    <div className="mb-4">
-                      <span className={`inline-block px-4 py-2 rounded-full text-sm font-medium ${
+                {/* Content Container - less margin on mobile */}
+                <div className="ml-3 sm:ml-4 flex-1">
+                  <div className="bg-white border-2 border-gray-200 rounded-lg sm:rounded-xl p-3 sm:p-4 shadow-sm">
+                    {/* Badge - Hidden on mobile, shown on sm+ */}
+                    <div className="mb-3 sm:mb-4 hidden sm:block">
+                      <span className={`inline-block px-3 py-1 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium ${
                         item.type === 'experience' 
                           ? 'bg-black text-white' 
                           : 'bg-gray-200 text-gray-800'
@@ -110,19 +110,19 @@ export const ExperienceTimeline: React.FC = () => {
                       </span>
                     </div>
                     
-                    {/* Title and Period */}
-                    <h3 className="text-xl font-bold text-black mb-2">{item.role}</h3>
-                    <p className="text-gray-600 font-medium mb-4">{item.period}</p>
+                    {/* Title and Period - smaller text on mobile */}
+                    <h3 className="text-lg sm:text-xl font-bold text-black mb-1 sm:mb-2">{item.role}</h3>
+                    <p className="text-sm sm:text-base text-gray-600 font-medium mb-3 sm:mb-4">{item.period}</p>
                     
-                    {/* Description */}
-                    <p className="text-gray-700 leading-relaxed mb-4">{item.description}</p>
+                    {/* Description - smaller text and spacing on mobile */}
+                    <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-3 sm:mb-4">{item.description}</p>
                     
-                    {/* Skills */}
-                    <div className="flex flex-wrap gap-2">
+                    {/* Skills - smaller and more compact on mobile */}
+                    <div className="flex flex-wrap gap-1 sm:gap-2">
                       {item.skills.map((skill, skillIndex) => (
                         <span 
                           key={skillIndex} 
-                          className="text-xs bg-gray-100 text-gray-700 px-3 py-1 rounded-full border"
+                          className="text-xs bg-gray-100 text-gray-700 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full border"
                         >
                           {skill}
                         </span>

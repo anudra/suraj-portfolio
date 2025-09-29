@@ -16,7 +16,7 @@ export const homeData: HomeData = {
   greeting: "Hello!",
   title: "I'm Suraj TP, Engineering Innovator",
   description: "Passionate about drones, prototyping, and innovative design. Specializing in 3D CAD modeling, FPV drone technology, and turning ideas into high-performance solutions.",
-  image: '/Icon 28.png',
+  image: 'https://drive.google.com/uc?export=view&id=1qleaGbussXQJuk3caGNPlu7KgahQwSAj',
   stats: {
     experience: "5+ Years",
   },
