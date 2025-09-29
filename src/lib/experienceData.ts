@@ -1,0 +1,50 @@
+export type TimelineItem = {
+  role: string;
+  period: string;
+  description: string;
+  skills: string[];
+  type: "experience" | "education";
+};
+
+export const timelineData: TimelineItem[] = [
+  {
+    role: "World's Fastest Drone Project",
+    period: "2024 – Present",
+    description:
+      "Designed aero-structure for the world's fastest drone that achieved a record-breaking speed of 329 km/h. Focused on aerodynamic optimization, structural integrity, and high-speed performance engineering.",
+    skills: ["Aero-structure Design", "High-Speed Aerodynamics", "Performance Engineering"],
+    type: "experience",
+  },
+  {
+    role: "3D Printing Service Provider",
+    period: "2019 – Present",
+    description:
+      "Running a nationwide 3D printing service across India, delivering prototypes and custom parts for clients. Expertise in additive manufacturing, rapid prototyping, and engineering solutions.",
+    skills: ["3D Printing", "Rapid Prototyping", "Client Services"],
+    type: "experience",
+  },
+  {
+    role: "ADDC SAE India - 1st Place Winner",
+    period: "2023 – 2024",
+    description:
+      "Designed and developed an autonomous drone for the Autonomous Drone Development Challenge, winning First Place in the Unique Technological Development Award. Integrated advanced flight systems and autonomous navigation.",
+    skills: ["Autonomous Systems", "Drone Development", "Flight Systems"],
+    type: "experience",
+  },
+  {
+    role: "Final Year Project - Flower-Dropping Drone",
+    period: "2024",
+    description:
+      "Developed an innovative drone combining 3D printed parts with carbon fiber for optimal strength and lightweight efficiency. Focused on precision dropping mechanisms and flight stability.",
+    skills: ["Carbon Fiber Integration", "3D Design", "Flight Mechanics"],
+    type: "experience",
+  },
+  {
+    role: "B.E. Electronics and Communication Engineering",
+    period: "2022 – Present",
+    description:
+      "Currently pursuing Bachelor of Engineering in Electronics and Communication (3rd year). Specializing in embedded systems, communication hardware, and electronic circuit design with focus on drone technology applications.",
+    skills: ["Electronics Engineering", "Embedded Systems", "PCB Design"],
+    type: "education",
+  },
+];
