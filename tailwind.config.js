@@ -18,17 +18,36 @@ module.exports = {
     },
     extend: {
       animation: {
-        'fade-in-up': 'fade-in-up 0.8s ease-out forwards',
-        'fade-in-left': 'fade-in-left 0.8s ease-out forwards',
-        'fade-in-right': 'fade-in-right 0.8s ease-out forwards',
+        'fade-in-up': 'fade-in-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-in-down': 'fade-in-down 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-in-left': 'fade-in-left 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-in-right': 'fade-in-right 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'scale-in': 'scale-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'rotate-in': 'rotate-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'float': 'float 3s ease-in-out infinite',
-        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+        'float-slow': 'float-slow 6s ease-in-out infinite',
+        'pulse-glow': 'pulse-glow 2.5s ease-in-out infinite',
+        'shimmer': 'shimmer 3s linear infinite',
+        'gradient-shift': 'gradient-shift 8s ease infinite',
+        'bounce-in': 'bounce-in 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards',
+        'slide-up-fade': 'slide-up-fade 1s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
       },
       keyframes: {
         'fade-in-up': {
           from: {
             opacity: '0',
-            transform: 'translateY(30px)',
+            transform: 'translateY(40px)',
+          },
+          to: {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+        },
+        'fade-in-down': {
+          from: {
+            opacity: '0',
+            transform: 'translateY(-40px)',
           },
           to: {
             opacity: '1',
@@ -38,7 +57,7 @@ module.exports = {
         'fade-in-left': {
           from: {
             opacity: '0',
-            transform: 'translateX(-30px)',
+            transform: 'translateX(-40px)',
           },
           to: {
             opacity: '1',
@@ -48,11 +67,31 @@ module.exports = {
         'fade-in-right': {
           from: {
             opacity: '0',
-            transform: 'translateX(30px)',
+            transform: 'translateX(40px)',
           },
           to: {
             opacity: '1',
             transform: 'translateX(0)',
+          },
+        },
+        'scale-in': {
+          from: {
+            opacity: '0',
+            transform: 'scale(0.8)',
+          },
+          to: {
+            opacity: '1',
+            transform: 'scale(1)',
+          },
+        },
+        'rotate-in': {
+          from: {
+            opacity: '0',
+            transform: 'rotate(-10deg) scale(0.9)',
+          },
+          to: {
+            opacity: '1',
+            transform: 'rotate(0deg) scale(1)',
           },
         },
         float: {
@@ -60,15 +99,78 @@ module.exports = {
             transform: 'translateY(0px)',
           },
           '50%': {
-            transform: 'translateY(-10px)',
+            transform: 'translateY(-15px)',
+          },
+        },
+        'float-slow': {
+          '0%, 100%': {
+            transform: 'translateY(0px) rotate(0deg)',
+          },
+          '33%': {
+            transform: 'translateY(-10px) rotate(1deg)',
+          },
+          '66%': {
+            transform: 'translateY(-5px) rotate(-1deg)',
           },
         },
         'pulse-glow': {
           '0%, 100%': {
-            opacity: '0.3',
+            opacity: '0.4',
+            transform: 'scale(1)',
           },
           '50%': {
-            opacity: '0.8',
+            opacity: '0.9',
+            transform: 'scale(1.05)',
+          },
+        },
+        shimmer: {
+          '0%': {
+            backgroundPosition: '-1000px 0',
+          },
+          '100%': {
+            backgroundPosition: '1000px 0',
+          },
+        },
+        'gradient-shift': {
+          '0%, 100%': {
+            backgroundPosition: '0% 50%',
+          },
+          '50%': {
+            backgroundPosition: '100% 50%',
+          },
+        },
+        'bounce-in': {
+          '0%': {
+            opacity: '0',
+            transform: 'scale(0.3)',
+          },
+          '50%': {
+            opacity: '1',
+            transform: 'scale(1.05)',
+          },
+          '70%': {
+            transform: 'scale(0.95)',
+          },
+          '100%': {
+            transform: 'scale(1)',
+          },
+        },
+        'slide-up-fade': {
+          from: {
+            opacity: '0',
+            transform: 'translateY(60px)',
+          },
+          to: {
+            opacity: '1',
+            transform: 'translateY(0)',
+          },
+        },
+        'glow-pulse': {
+          '0%, 100%': {
+            boxShadow: '0 0 20px rgba(255, 255, 255, 0.1)',
+          },
+          '50%': {
+            boxShadow: '0 0 40px rgba(255, 255, 255, 0.3)',
           },
         },
       },

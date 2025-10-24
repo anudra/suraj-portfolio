@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { X, Upload, FileText, Package, Palette } from 'lucide-react';
+import { IoClose, IoCloudUpload, IoDocument, IoCube, IoColorPalette } from 'react-icons/io5';
 
 interface CustomQuoteModalProps {
   isOpen: boolean;
@@ -100,7 +100,7 @@ Please review and provide a detailed quote for this project.
             onClick={onClose}
             className="w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors"
           >
-            <X className="w-5 h-5 text-gray-600" />
+            <IoClose className="w-5 h-5 text-gray-600" />
           </button>
         </div>
 
@@ -303,7 +303,7 @@ Please review and provide a detailed quote for this project.
                     Upload Files (Optional)
                   </label>
                   <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-gray-400 transition-colors">
-                    <Upload className="w-8 h-8 text-gray-400 mx-auto mb-4" />
+                    <IoCloudUpload className="w-8 h-8 text-gray-400 mx-auto mb-4" />
                     <p className="text-gray-600 mb-2">Drag and drop files here, or</p>
                     <input
                       type="file"
@@ -330,7 +330,7 @@ Please review and provide a detailed quote for this project.
                       {formData.files.map((file, index) => (
                         <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                           <div className="flex items-center">
-                            <FileText className="w-4 h-4 text-gray-400 mr-2" />
+                            <IoDocument className="w-4 h-4 text-gray-400 mr-2" />
                             <span className="text-sm text-gray-700">{file.name}</span>
                             <span className="text-xs text-gray-500 ml-2">
                               ({(file.size / 1024 / 1024).toFixed(2)} MB)
@@ -341,7 +341,7 @@ Please review and provide a detailed quote for this project.
                             onClick={() => removeFile(index)}
                             className="text-gray-400 hover:text-red-500 transition-colors"
                           >
-                            <X className="w-4 h-4" />
+                            <IoClose className="w-4 h-4" />
                           </button>
                         </div>
                       ))}

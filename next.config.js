@@ -1,8 +1,14 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: false, // Disabling Strict Mode
   images: {
-    domains: ['drive.google.com'], // Allow Google Drive images
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "drive.google.com",
+        pathname: "/**",
+      },
+    ],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

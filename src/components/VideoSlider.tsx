@@ -1,158 +1,75 @@
-import { useState, useRef } from 'react';
-import { ChevronLeft, ChevronRight, Play, Pause } from 'lucide-react';
+import { useState } from 'react';
+import { IoChevronBack, IoChevronForward } from 'react-icons/io5';
 import { videosData, Video } from '@/lib/videosData';
 
 export function VideoSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [hoveredVideo, setHoveredVideo] = useState<number | null>(null);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % videosData.length);
-    setIsPlaying(false);
-    setHoveredVideo(null);
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + videosData.length) % videosData.length);
-    setIsPlaying(false);
-    setHoveredVideo(null);
-  };
-
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-    setIsPlaying(false);
-    setHoveredVideo(null);
-  };
-
-  const handleVideoHover = (videoIndex: number, isHovering: boolean) => {
-    const video = videoRefs.current[videoIndex];
-    if (video && videoIndex === currentIndex) {
-      if (isHovering) {
-        setHoveredVideo(videoIndex);
-        video.play();
-        setIsPlaying(true);
-      } else {
-        setHoveredVideo(null);
-        video.pause();
-        video.currentTime = 0; // Reset to beginning
-        setIsPlaying(false);
-      }
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setCurrentIndex((prev) => (prev + 1) % videosData.length);
+      setTimeout(() => setIsAnimating(false), 800);
     }
   };
 
-  const togglePlayPause = (videoIndex: number) => {
-    const video = videoRefs.current[videoIndex];
-    if (video) {
-      if (video.paused) {
-        video.play();
-        setIsPlaying(true);
-      } else {
-        video.pause();
-        setIsPlaying(false);
-      }
+  const prevSlide = () => {
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setCurrentIndex((prev) => (prev - 1 + videosData.length) % videosData.length);
+      setTimeout(() => setIsAnimating(false), 800);
+    }
+  };
+
+  const goToSlide = (index: number) => {
+    if (!isAnimating && index !== currentIndex) {
+      setIsAnimating(true);
+      setCurrentIndex(index);
+      setTimeout(() => setIsAnimating(false), 800);
     }
   };
 
   return (
-    <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
+    <div className="relative max-w-5xl mx-auto px-2 sm:px-4">
       {/* Main Slider */}
-      <div className="relative overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-lg">
+      <div className="relative overflow-hidden rounded-lg sm:rounded-2xl bg-white border border-gray-200 shadow-lg perspective-1000">
         <div 
-          className="flex transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          className="flex transition-all duration-700"
+          style={{ 
+            transform: `translateX(-${currentIndex * 100}%)`,
+            transitionTimingFunction: 'cubic-bezier(0.4, 0.0, 0.2, 1)',
+            transformStyle: 'preserve-3d'
+          }}
         >
           {videosData.map((video, index) => (
-            <div key={video.id} className="w-full flex-shrink-0 relative group">
+            <div 
+              key={video.id} 
+              className="w-full flex-shrink-0 relative group"
+              style={{ transformStyle: 'preserve-3d' }}
+            >
               {/* Video Container */}
               <div 
-                className="aspect-[16/10] bg-gray-900 overflow-hidden relative cursor-pointer"
-                onMouseEnter={() => handleVideoHover(index, true)}
-                onMouseLeave={() => handleVideoHover(index, false)}
+                className="aspect-[16/9] bg-gray-900 overflow-hidden relative"
               >
-                {/* Video Element */}
-                <video
-                  ref={(el: HTMLVideoElement | null) => {
-                    videoRefs.current[index] = el;
-                  }}
-                  src={video.videoUrl || `https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4`} // Fallback sample video
-                  poster={video.thumbnail}
-                  className="w-full h-full object-cover"
-                  muted
-                  loop
-                  preload="metadata"
+                {/* Google Drive iframe */}
+                <iframe
+                  src={video.videoUrl ? video.videoUrl.replace('/uc?export=view&id=', '/file/d/').replace(/id=([^&]+)/, 'file/d/$1/preview') : ''}
+                  className="w-full h-full"
+                  allow="autoplay"
+                  allowFullScreen
                 />
-
-                {/* Thumbnail Overlay (shows when not playing) */}
-                {hoveredVideo !== index && (
-                  <div className="absolute inset-0">
-                    <img 
-                      src={video.thumbnail}
-                      alt={video.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                )}
-                
-                {/* Play/Pause Button */}
-                <div 
-                  className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
-                    hoveredVideo === index && isPlaying ? 'opacity-0' : 'opacity-100 bg-black/30'
-                  }`}
-                  onClick={() => togglePlayPause(index)}
-                >
-                  <button className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-colors">
-                    {isPlaying && hoveredVideo === index ? (
-                      <Pause className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-gray-800" />
-                    ) : (
-                      <Play className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 text-gray-800 ml-0.5" />
-                    )}
-                  </button>
-                </div>
-
-                {/* Duration Badge */}
-                <div className="absolute bottom-4 right-4 bg-black/80 backdrop-blur-sm rounded-lg px-3 py-1 z-10">
-                  <span className="text-white text-sm">{video.duration}</span>
-                </div>
-
-                {/* Video Controls Overlay (appears on hover when playing) */}
-                {hoveredVideo === index && isPlaying && (
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="flex items-center justify-between text-white">
-                      <div>
-                        <span className="text-sm bg-white/20 backdrop-blur-sm rounded-full px-3 py-1">
-                          {video.category}
-                        </span>
-                      </div>
-                      <button 
-                        onClick={() => togglePlayPause(index)}
-                        className="w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
-                      >
-                        {isPlaying ? (
-                          <Pause className="w-4 h-4" />
-                        ) : (
-                          <Play className="w-4 h-4 ml-0.5" />
-                        )}
-                      </button>
-                    </div>
-                  </div>
-                )}
               </div>
 
               {/* Video Info (Always Visible) */}
-              <div className="p-4 sm:p-6 lg:p-8 bg-white">
-                <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 flex-wrap">
-                  <span className="text-xs sm:text-sm text-gray-500 bg-gray-100 rounded-full px-2 py-0.5 sm:px-3 sm:py-1">
+              <div className="p-1.5 sm:p-3 lg:p-4 bg-white">
+                <div className="flex items-center gap-1 sm:gap-1.5 mb-0.5 sm:mb-1 flex-wrap">
+                  <span className="lg:text-xs sm:text-[10px] text-gray-500 bg-gray-100 rounded-full px-1.5 py-0.5 sm:px-2 sm:py-0.5">
                     {video.category}
                   </span>
-                  <span className="text-xs sm:text-sm text-gray-500">{video.duration}</span>
-                  {video.views && (
-                    <span className="text-xs sm:text-sm text-gray-500">• {video.views} views</span>
-                  )}
                 </div>
-                <h3 className="text-lg sm:text-xl lg:text-2xl mb-2 text-black leading-tight">{video.title}</h3>
-                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">{video.description}</p>
+                <h3 className="text-xs sm:text-sm lg:text-xl font-medium mb-0.5 sm:mb-1 text-black leading-tight">{video.title}</h3>
+                <p className="lg:text-[14px]/6 sm:text-xs text-gray-600 leading-relaxed line-clamp-1 sm:line-clamp-2">{video.description}</p>
               </div>
             </div>
           ))}
@@ -162,27 +79,30 @@ export function VideoSlider() {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-2 sm:left-4 lg:left-6 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-white border border-gray-200 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors z-20"
+        disabled={isAnimating}
+        className="absolute left-1 sm:left-2 lg:left-4 top-1/2 -translate-y-1/2 w-7 h-7 sm:w-9 sm:h-9 lg:w-11 lg:h-11 bg-white border border-gray-200 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-all duration-300 z-20 hover:scale-110 hover:-rotate-12 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
+        <IoChevronBack className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-600" />
       </button>
       
       <button
         onClick={nextSlide}
-        className="absolute right-2 sm:right-4 lg:right-6 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-white border border-gray-200 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors z-20"
+        disabled={isAnimating}
+        className="absolute right-1 sm:right-2 lg:right-4 top-1/2 -translate-y-1/2 w-7 h-7 sm:w-9 sm:h-9 lg:w-11 lg:h-11 bg-white border border-gray-200 rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-all duration-300 z-20 hover:scale-110 hover:rotate-12 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" />
+        <IoChevronForward className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-gray-600" />
       </button>
 
       {/* Dots Indicator */}
-      <div className="flex justify-center space-x-2 sm:space-x-3 mt-4 sm:mt-6 lg:mt-8">
+      <div className="flex justify-center space-x-1.5 sm:space-x-2 mt-2 sm:mt-3 lg:mt-4">
         {videosData.map((_, index) => (
           <button
             key={index}
             onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-colors ${
+            disabled={isAnimating}
+            className={`w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all duration-300 hover:scale-150 hover:rotate-180 disabled:cursor-not-allowed ${
               index === currentIndex 
-                ? 'bg-black' 
+                ? 'bg-black scale-125 animate-pulse' 
                 : 'bg-gray-300 hover:bg-gray-400'
             }`}
           />

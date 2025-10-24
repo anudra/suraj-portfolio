@@ -9,6 +9,11 @@ export const products: Product[] = [
     category: 'Collectibles',
     images: [
       'https://images.unsplash.com/photo-1605895770262-c72b353f9090?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwzZCUyMHByaW50aW5nJTIwbWluaWF0dXJlJTIwZmlndXJpbmV8ZW58MXx8fHwxNzU3MTc2MDk4fDA&ixlib=rb-4.1.0&q=80&w=1080',
+      'https://images.unsplash.com/photo-1690124815040-6604fbc46254?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwzZCUyMHByaW50ZWQlMjBqZXdlbHJ5JTIwcGVuZGFudHxlbnwxfHx8fDE3NTcxNzYxMDl8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      'https://images.unsplash.com/photo-1748599327993-3e8b4f18c9d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwzZCUyMHByaW50ZWQlMjBkZWNvcmF0aXZlJTIwdmFzZXxlbnwxfHx8fDE3NTcxNzYxMDN8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      'https://images.unsplash.com/photo-1727833369293-fbc74e2819cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwzZCUyMHByaW50ZWQlMjBhcmNoaXRlY3R1cmFsJTIwbW9kZWx8ZW58MXx8fHwxNzU3MTc2MTE0fDA&ixlib=rb-4.1.0&q=80&w=1080',
+      'https://images.unsplash.com/photo-1747228983994-60a79f4b4e2f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwzZCUyMHByaW50ZWQlMjBjdXN0b20lMjBwaG9uZSUyMGNhc2V8ZW58MXx8fHwxNzU3MTc2MTE5fDA&ixlib=rb-4.1.0&q=80&w=1080',
+      'https://images.unsplash.com/photo-1740625942947-26caf3a16d3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHwzZCUyMHByaW50ZWQlMjB0b3klMjByb2JvdHxlbnwxfHx8fDE3NTcxNzYxMjR8MA&ixlib=rb-4.1.0&q=80&w=1080',
     ],
     materials: [
       {

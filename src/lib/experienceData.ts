@@ -8,12 +8,12 @@ export type TimelineItem = {
 
 export const timelineData: TimelineItem[] = [
   {
-    role: "World's Fastest Drone Project",
-    period: "2024 – Present",
+    role: "B.E. Electronics and Communication Engineering",
+    period: "2022 – Present",
     description:
-      "Designed aero-structure for the world's fastest drone that achieved a record-breaking speed of 329 km/h. Focused on aerodynamic optimization, structural integrity, and high-speed performance engineering.",
-    skills: ["Aero-structure Design", "High-Speed Aerodynamics", "Performance Engineering"],
-    type: "experience",
+      "Currently pursuing Bachelor of Engineering in Electronics and Communication (3rd year). Specializing in embedded systems, communication hardware, and electronic circuit design with focus on drone technology applications.",
+    skills: ["Electronics Engineering", "Embedded Systems", "PCB Design"],
+    type: "education",
   },
   {
     role: "3D Printing Service Provider",
@@ -24,11 +24,11 @@ export const timelineData: TimelineItem[] = [
     type: "experience",
   },
   {
-    role: "ADDC SAE India - 1st Place Winner",
-    period: "2023 – 2024",
+    role: "World's Fastest Drone Project",
+    period: "2024",
     description:
-      "Designed and developed an autonomous drone for the Autonomous Drone Development Challenge, winning First Place in the Unique Technological Development Award. Integrated advanced flight systems and autonomous navigation.",
-    skills: ["Autonomous Systems", "Drone Development", "Flight Systems"],
+      "Designed aero-structure for the world's fastest drone that achieved a record-breaking speed of 329 km/h. Focused on aerodynamic optimization, structural integrity, and high-speed performance engineering.",
+    skills: ["Aero-structure Design", "High-Speed Aerodynamics", "Performance Engineering"],
     type: "experience",
   },
   {
@@ -40,11 +40,11 @@ export const timelineData: TimelineItem[] = [
     type: "experience",
   },
   {
-    role: "B.E. Electronics and Communication Engineering",
-    period: "2022 – Present",
+    role: "ADDC SAE India - 1st Place Winner",
+    period: "2023",
     description:
-      "Currently pursuing Bachelor of Engineering in Electronics and Communication (3rd year). Specializing in embedded systems, communication hardware, and electronic circuit design with focus on drone technology applications.",
-    skills: ["Electronics Engineering", "Embedded Systems", "PCB Design"],
-    type: "education",
+      "Designed and developed an autonomous drone for the Autonomous Drone Development Challenge, winning First Place in the Unique Technological Development Award. Integrated advanced flight systems and autonomous navigation.",
+    skills: ["Autonomous Systems", "Drone Development", "Flight Systems"],
+    type: "experience",
   },
 ];
