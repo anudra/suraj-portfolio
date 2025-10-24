@@ -18,8 +18,8 @@ export const videosData: Video[] = [
   },
   {
     id: 2,
-    title: "World's Fastest Drone",
-    description: "Record-breaking high-speed flight footage of the world's fastest drone achieving 329 km/h. Showcasing advanced aero-structure design, aerodynamic optimization, and extreme performance engineering.",
+    title: "India's Fastest Drone",
+    description: "Record-breaking high-speed flight footage of India's fastest drone achieving 329 km/h. Showcasing advanced aero-structure design, aerodynamic optimization, and extreme performance engineering.",
     thumbnail: "https://drive.google.com/uc?export=view&id=1WI7r0tMjicDE6pBhXpphKi1f3PnByMsI",
     videoUrl: "https://drive.google.com/file/d/188rpyUg67ZG31Sl6R7c6_4Tjc21WCR_D/preview",
     category: "High-Speed Flight",

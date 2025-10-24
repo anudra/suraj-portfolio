@@ -9,8 +9,8 @@ export interface Design {
 export const designsData: Design[] = [
   {
     id: 1,
-    title: "World's Fastest Drone - 329 km/h",
-    description: "Aero-structure design for the world's fastest drone that achieved a record-breaking speed of 329 km/h. Focused on aerodynamic optimization, structural integrity, and high-speed performance engineering.",
+    title: "India's Fastest Drone - 329 km/h",
+    description: "Aero-structure design for India's fastest drone that achieved a record-breaking speed of 329 km/h. Focused on aerodynamic optimization, structural integrity, and high-speed performance engineering.",
     category: "Drone Engineering",
     image: "https://drive.google.com/uc?export=view&id=1WI7r0tMjicDE6pBhXpphKi1f3PnByMsI",
 

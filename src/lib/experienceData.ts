@@ -24,10 +24,10 @@ export const timelineData: TimelineItem[] = [
     type: "experience",
   },
   {
-    role: "World's Fastest Drone Project",
+    role: "India's Fastest Drone Project",
     period: "2024",
     description:
-      "Designed aero-structure for the world's fastest drone that achieved a record-breaking speed of 329 km/h. Focused on aerodynamic optimization, structural integrity, and high-speed performance engineering.",
+      "Designed aero-structure for India's fastest drone that achieved a record-breaking speed of 329 km/h. Focused on aerodynamic optimization, structural integrity, and high-speed performance engineering.",
     skills: ["Aero-structure Design", "High-Speed Aerodynamics", "Performance Engineering"],
     type: "experience",
   },
