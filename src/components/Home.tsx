@@ -2,13 +2,15 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import { HiExternalLink } from 'react-icons/hi';
 import { homeData } from '@/lib/homeData';
 import { useMouseParallax } from '@/hooks/useScrollAnimation';
 
-export function Home() {
-  const router = useRouter();
+interface HomeProps {
+  onExploreProducts?: () => void;
+}
+
+export function Home({ onExploreProducts }: HomeProps = {}) {
   const mousePosition = useMouseParallax();
   const [hasAnimated, setHasAnimated] = useState(() => {
     // Check if animations have already run in this session
@@ -32,7 +34,9 @@ export function Home() {
   }, [hasAnimated]);
 
   const handleExploreProducts = () => {
-    router.push('/products');
+    if (onExploreProducts) {
+      onExploreProducts();
+    }
   };
 
   return (

@@ -1,12 +1,13 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Home } from './Home';
 import { AboutMe } from './Aboutme';
 import { DesignSlider } from './DesignSlider';
 import { VideoSlider } from './VideoSlider';
 import { ExperienceTimeline } from './ExperienceTimeline';
 import { Contact } from './Contact';
+import { WorkInProgress } from './WorkInProgress';
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface PortfolioPageProps {
@@ -14,6 +15,7 @@ interface PortfolioPageProps {
 }
 
 export function PortfolioPage({ currentSection }: PortfolioPageProps) {
+  const [showWorkInProgress, setShowWorkInProgress] = useState(false);
   const designHeaderRef = useRef<HTMLDivElement>(null);
   const videoHeaderRef = useRef<HTMLDivElement>(null);
   const designSliderRef = useRef<HTMLDivElement>(null);
@@ -35,10 +37,14 @@ export function PortfolioPage({ currentSection }: PortfolioPageProps) {
     }
   }, [currentSection]);
 
+  if (showWorkInProgress) {
+    return <WorkInProgress onBack={() => setShowWorkInProgress(false)} />;
+  }
+
   return (
     <div className="bg-white">
       {/* Home Section */}
-      <Home />
+      <Home onExploreProducts={() => setShowWorkInProgress(true)} />
 
       {/* About Section */}
       <AboutMe />
