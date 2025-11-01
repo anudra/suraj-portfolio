@@ -9,7 +9,7 @@ export type TimelineItem = {
 export const timelineData: TimelineItem[] = [
   {
     role: "B.E. Electronics and Communication Engineering",
-    period: "2022 – Present",
+    period: "2023 – Present",
     description:
       "Currently pursuing Bachelor of Engineering in Electronics and Communication (3rd year). Specializing in embedded systems, communication hardware, and electronic circuit design with focus on drone technology applications.",
     skills: ["Electronics Engineering", "Embedded Systems", "PCB Design"],
@@ -17,7 +17,7 @@ export const timelineData: TimelineItem[] = [
   },
   {
     role: "3D Printing Service Provider",
-    period: "2019 – Present",
+    period: "2021 – Present",
     description:
       "Running a nationwide 3D printing service across India, delivering prototypes and custom parts for clients. Expertise in additive manufacturing, rapid prototyping, and engineering solutions.",
     skills: ["3D Printing", "Rapid Prototyping", "Client Services"],

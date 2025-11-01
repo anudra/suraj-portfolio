@@ -15,7 +15,7 @@ export const aboutData: AboutData = {
   image: 'https://drive.google.com/uc?export=view&id=1qleaGbussXQJuk3caGNPlu7KgahQwSAj',
   skills: [
     "Drone Technology", 
-    "3D CAD Design", 
+    "Solid Works", 
     "FPV Systems", 
     "3D Printing", 
     "PCB Design", 
