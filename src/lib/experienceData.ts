@@ -24,6 +24,13 @@ export const timelineData: TimelineItem[] = [
     type: "experience",
   },
   {
+    role: "FPV Drone Piloting",
+    period: "2020 – Present",
+    description: "Flying and building FPV drones with 5+ years of experience in custom design, tuning, and advanced piloting. Specialized in freestyle and cinematic flying, with expertise in drone assembly, electronics integration, and flight optimization.",
+    skills: ["FPV Piloting", "Drone Assembly", "Flight Optimization"],
+    type: "experience",
+  },
+  {
     role: "India's Fastest Drone Project",
     period: "2024",
     description:
